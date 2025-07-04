@@ -1,30 +1,32 @@
-import prisma from "../lib/prisma.js";
+import DBClient from "../lib/DBClient.js";
+
+const dbClient = DBClient.getInstance().prisma;
 
 const createNewBrand = async (brandData) => {
-    return prisma.brand.create({ data: brandData });
+    return dbClient.brand.create({ data: brandData });
 };
 
 const updateBrand = async (brandId, brandData) => {
-    return prisma.brand.update({
+    return dbClient.brand.update({
             where: { brandId },
             data: brandData
     });
 };
 
 const deleteBrand = async (brandId) => {
-    return prisma.brand.delete({ where: { brandId } });
+    return dbClient.brand.delete({ where: { brandId } });
 };
 
 const getAllBrand = async () => {
-    return prisma.brand.findMany();
+    return dbClient.brand.findMany();
 };
 
 const findBrandByName = async (brandName) => {
-    return prisma.brand.findUnique({ where: { brandName } });
+    return dbClient.brand.findUnique({ where: { brandName } });
 };
 
 const findBrandById = async (brandId) => {
-    return prisma.brand.findUnique({ where: { brandId } });
+    return dbClient.brand.findUnique({ where: { brandId } });
 };
 
 export default {

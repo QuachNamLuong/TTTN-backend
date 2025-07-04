@@ -30,3 +30,7 @@ docker compose up --build
    ```bash
    npx prisma generate
    ```
+4. Chạy project:
+   ```bash
+   node src/server.js
+   ```

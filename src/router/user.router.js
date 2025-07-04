@@ -1,12 +1,12 @@
 import { Router } from 'express';
 const router = Router();
-import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from '../repos/user.repo.js';
+import userRepo from '../repos/user.repo.js';
 
 // Routes
-router.get('/', getAllUsers);
-router.get('/:id', getUserById);
-router.post('/', createUser);
-router.put('/:id', updateUser);
-router.delete('/:id', deleteUser);
+router.get('/', userRepo.getAllUsers);
+router.get('/:id', userRepo.getUserById);
+router.post('/', userRepo.createUser);
+router.put('/:id', userRepo.updateUser);
+router.delete('/:id', userRepo.deleteUser);
 
 export default router;

@@ -46,14 +46,14 @@ model Role {
 model Order {
   orderId            String     @id @default(uuid()) @map("order_id")
   guestName          String   @map("guest_name")
-  guestEmail         String   @map("guest_emal")
+  guestEmail         String   @map("guest_email")
   guestPhoneNumber         String   @map("guest_phone_number")
   shippingAddress    String @map("shipping_address")
   shippingPhoneNumber String  @map("shipping_phone_number")
   orderTotal         Decimal    @db.Decimal(18, 0) @map("order_total")
-  orderStatus        Int  @map("order_status")
+  orderStatus        OrderStatus  @map("order_status")
   paymentMethod      Int  @map("payment_method")
-  paymentStatus      Int  @map("payment_status")
+  paymentStatus      PaymentStatus  @map("payment_status")
   shippingCost       Decimal    @db.Decimal(18, 0) @map("shipping_cost")
   couponCode         String @map("coupon_code")
   discountAmount     Decimal    @db.Decimal(18, 0) @map("discount_amount")
@@ -69,12 +69,28 @@ model Order {
   @@map("orders")
 }
 
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+  CANCELLED
+}
+
 model OrderItem {
   orderItemId       String   @id @default(uuid()) @map("order_item_id") 
   quantity          Int
   priceAtPurchase   Decimal  @db.Decimal(18, 0) @map("price_at_purchase")
   totalItemPrice    Decimal  @db.Decimal(18, 0) @map("total_item_price")
-  itemStatus        Int @map("item_status")
+  itemStatus        OrderItemStatus @map("item_status")
 
   orderId           String @map("order_id")
   order             Order    @relation(fields: [orderId], references: [orderId])
@@ -84,10 +100,19 @@ model OrderItem {
   @@map("order_items")
 }
 
+enum OrderItemStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+}
+
 model ProductVariant {
   productVariantId String @id @default(uuid()) @map("product_variant_id")
 
-  productVariantSKU String @map("product_variant_sku")
+  productVariantSKU String @unique @map("product_variant_sku")
   price Decimal
   stockQuantity Int @map("stock_quantity")
 
@@ -118,7 +143,7 @@ model Product {
 model Brand {
   brandId String @id @default(uuid()) @map("brand_id")
 
-  brandName String @map("brand_name")
+  brandName String @unique @map("brand_name")
 
   products Product[]
 
@@ -170,7 +195,7 @@ model Option {
 }
 
 model AttributeGroup {
-  attributeGroupId String @id @default(uuid()) @map("attributes_group_id")
+  attributeGroupId String @id @default(uuid()) @map("attribute_group_id")
 
   groupName String @map("group_name")
   displayOrder Int @map("display_order")
@@ -187,7 +212,7 @@ model ProductAttribute {
 
   attributeName String @map("attribute_name")
   displayOrder Int @map("display_order")
-  isFillterable Boolean @map("is_fillerable")
+  isFilterable Boolean @map("is_filterable")
 
   attributeGroupId String @map("attribute_group_id")
   attributeGroup AttributeGroup @relation(fields: [attributeGroupId], references: [attributeGroupId])
