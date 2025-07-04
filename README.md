@@ -28,5 +28,5 @@ docker compose up --build
 3. Khởi tạo Prisma:
 
    ```bash
-   npx prisma generate && npx prisma migrate dev --name init
+   npx prisma generate
    ```
