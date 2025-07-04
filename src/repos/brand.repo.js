@@ -1,5 +1,4 @@
-import { PrismaClient } from "../generated/prisma";
-const prisma = new PrismaClient();
+import prisma from "../lib/prisma.js";
 
 const createNewBrand = async (brandData) => {
     return prisma.brand.create({ data: brandData });
