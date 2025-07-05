@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import userRepo from '../repos/user.repo.js';
+import * as userRepo from '../repos/user.repo.js';
 
 // Routes
 router.get('/', userRepo.getAllUsers);
