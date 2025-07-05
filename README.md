@@ -1,6 +1,7 @@
 ## Cách chạy project
 
 ### Sử dụng Docker Compose
+
 1. Cấu hình môi trường:
    Mở file `.env` và chỉnh sửa:
 
