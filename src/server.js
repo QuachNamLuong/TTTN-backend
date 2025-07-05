@@ -8,4 +8,5 @@ if (!serverConfig.port) {
 
 app.listen(serverConfig.port, () => {
   console.log(`Server running at http://localhost:${serverConfig.port}`);
+  console.log(`Swagger running at http://localhost:${serverConfig.port}/api-docs`);
 });
