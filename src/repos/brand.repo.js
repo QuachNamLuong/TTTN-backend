@@ -1,39 +1,30 @@
-import DBClient from "../lib/DBClient.js";
+import DbClient from "../lib/DbClient.js";
 
-const dbClient = DBClient.getInstance().prisma;
+const prisma = DbClient.getInstance().prisma;
 
-const createNewBrand = async (brandData) => {
-    return dbClient.brand.create({ data: brandData });
+export const createNewBrand = async (brandData) => {
+    return prisma.brand.create({ data: brandData });
 };
 
-const updateBrand = async (brandId, brandData) => {
-    return dbClient.brand.update({
+export const updateBrand = async (brandId, brandData) => {
+    return prisma.brand.update({
             where: { brandId },
             data: brandData
     });
 };
 
-const deleteBrand = async (brandId) => {
-    return dbClient.brand.delete({ where: { brandId } });
+export const deleteBrand = async (brandId) => {
+    return prisma.brand.delete({ where: { brandId } });
 };
 
-const getAllBrand = async () => {
-    return dbClient.brand.findMany();
+export const getAllBrand = async () => {
+    return prisma.brand.findMany();
 };
 
-const findBrandByName = async (brandName) => {
-    return dbClient.brand.findUnique({ where: { brandName } });
+export const findBrandByName = async (brandName) => {
+    return prisma.brand.findUnique({ where: { brandName } });
 };
 
-const findBrandById = async (brandId) => {
-    return dbClient.brand.findUnique({ where: { brandId } });
-};
-
-export default {
-    createNewBrand,
-    updateBrand,
-    deleteBrand,
-    getAllBrand,
-    findBrandByName,
-    findBrandById
+export const findBrandById = async (brandId) => {
+    return prisma.brand.findUnique({ where: { brandId } });
 };

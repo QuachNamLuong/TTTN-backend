@@ -1,34 +1,44 @@
-import DBClient from "../lib/DBClient.js";
+import DbClient from "../lib/DbClient.js";
 
-const dbClient = DBClient.getInstance().prisma;
+const prisma = DbClient.getInstance().prisma;
 
-const getAllUsers = async () => {
-  return dbClient.user.findMany();
+export const createUser = async (data) => {
+  return prisma.user.create({ data });
 };
 
-const getUserById = async (userId) => {
-  return dbClient.user.findUnique({ where: { userId } });
-};
-
-const createUser = async (userData) => {
-  return dbClient.user.create({ data: userData });
-};
-
-const updateUser = async (userId, userData) => {
-  return dbClient.user.update({
+export const getUserById = async (userId) => {
+  return prisma.user.findUnique({
     where: { userId },
-    data: userData,
   });
 };
 
-const deleteUser = async (userId) => {
-  return dbClient.user.delete({ where: { userId } });
+export const getUserByUsername = async (username) => {
+  return prisma.user.findUnique({
+    where: { username },
+  });
 };
 
-export default {
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser
+export const getUserByEmail = async (email) => {
+  return prisma.user.findUnique({
+    where: { email },
+  });
+};
+
+export const updateUser = async (userId, data) => {
+  return prisma.user.update({
+    where: { userId },
+    data,
+  });
+};
+
+export const deleteUser = async (userId) => {
+  return prisma.user.delete({
+    where: { userId },
+  });
+};
+
+export const listUsers = async (filter = {}) => {
+  return prisma.user.findMany({
+    where: filter,
+  });
 };

@@ -3,29 +3,29 @@ import { PrismaClient } from '../generated/prisma/index.js';
 /**
  * @typedef {import('@prisma/client').PrismaClient} PrismaClient
  */
-class DBClient {
+class DbClient {
   /**
    * @type {PrismaClient}
    */
   prisma;
 
   constructor() {
-    if (!DBClient.instance) {
+    if (!DbClient.instance) {
       this.prisma = new PrismaClient();
-      DBClient.instance = this;
+      DbClient.instance = this;
     }
-    return DBClient.instance;
+    return DbClient.instance;
   }
 
   /**
-   * @returns {DBClient}
+   * @returns {DbClient}
    */
   static getInstance() {
-    if (!DBClient.instance) {
-      DBClient.instance = new DBClient();
+    if (!DbClient.instance) {
+      DbClient.instance = new DbClient();
     }
-    return DBClient.instance;
+    return DbClient.instance;
   }
 }
 
-export default DBClient;
+export default DbClient;
