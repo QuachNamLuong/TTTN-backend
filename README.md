@@ -10,9 +10,9 @@
    ```
 
 2. Chạy lệnh:
-```bash
-docker compose up --build
-```
+   ```bash
+   docker compose up --build
+   ```
 
 ---
 
