@@ -5,7 +5,7 @@
    Mở file `.env` và chỉnh sửa:
 
    ```env
-   MYSQL_HOST=localhost
+   MYSQL_HOST=mysql
    ```
 
 2. Chạy lệnh:
