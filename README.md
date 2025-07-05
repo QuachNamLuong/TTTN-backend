@@ -28,6 +28,7 @@
    Mở file `.env` và chỉnh sửa các giá trị cho phù hợp, ví dụ:
 
    ```env
+   MYSQL_HOST=localhost
    MYSQL_ROOT_PASSWORD=your_password
    MYSQL_DATABASE=your_db
    ```
