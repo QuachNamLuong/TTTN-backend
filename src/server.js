@@ -1,12 +1,11 @@
 import app from './app.js';
+import { serverConfig } from './config/server.config.js';
 
-const PORT = process.env.PORT;
-
-if (!PORT) {
+if (!serverConfig.port) {
   console.error('.env PORT is undefined! Please set it in your .env file.');
   process.exit(1);
 }
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(serverConfig.port, () => {
+  console.log(`Server running at http://localhost:${serverConfig.port}`);
 });

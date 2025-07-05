@@ -1,6 +1,6 @@
 import { PrismaClient } from '../generated/prisma/index.js';
 const prisma = new PrismaClient();
-import { generateToken } from '../utils/jwt.js';
+import { generateToken } from '../utils/jwt.util.js';
 import bcrypt from 'bcryptjs';
 
 const login = async (req, res) => {
