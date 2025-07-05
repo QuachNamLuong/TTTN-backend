@@ -1,7 +1,14 @@
 ## Cách chạy project
 
 ### Sử dụng Docker Compose
+1. Cấu hình môi trường:
+   Mở file `.env` và chỉnh sửa:
 
+   ```env
+   MYSQL_HOST=localhost
+   ```
+
+2. Chạy lệnh:
 ```bash
 docker compose up --build
 ```
@@ -20,7 +27,6 @@ docker compose up --build
    Mở file `.env` và chỉnh sửa các giá trị cho phù hợp, ví dụ:
 
    ```env
-   MYSQL_HOST=localhost
    MYSQL_ROOT_PASSWORD=your_password
    MYSQL_DATABASE=your_db
    ```
