@@ -29,7 +29,7 @@ const options = {
       },
     ],
   },
-  apis: ['./src/router/*.js', './src/controllers/*.js'], // adjust paths
+  apis: ['./src/router/*.js', './src/controllers/*.js', './src/docs/*.js'], // adjust paths
 };
 
 export const swaggerSpec = swaggerJsdoc(options);

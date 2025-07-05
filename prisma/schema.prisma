@@ -144,6 +144,7 @@ model Brand {
   brandId String @id @default(uuid()) @map("brand_id")
 
   brandName String @unique @map("brand_name")
+  description String?
 
   products Product[]
 
